@@ -2,24 +2,26 @@ from datetime import time
 
 
 def test_dark_theme_by_time():
-    current_time = time(hour=5)
+    current_time = time(hour=6)
+
     if time(hour=6) < current_time < time(hour=22):
         is_dark_theme = False
+
     else:
         is_dark_theme = True
     assert is_dark_theme is True
 
 
 def test_dark_theme_by_time_and_user_choice():
-    current_time = time(hour=15)
+    current_time = time(hour=6)
     dark_theme_enabled_by_user = None
-    if dark_theme_enabled_by_user is None:
-        if time(hour=6) < current_time < time(hour=22):
-            is_dark_theme = True
-        else:
-            is_dark_theme = False
-    elif dark_theme_enabled_by_user:
+    if dark_theme_enabled_by_user:
         is_dark_theme = True
+    elif dark_theme_enabled_by_user is None:
+        if time(hour=6) < current_time < time(hour=22):
+            is_dark_theme = False
+        else:
+            is_dark_theme = True
     else:
         is_dark_theme = False
     assert is_dark_theme is True
